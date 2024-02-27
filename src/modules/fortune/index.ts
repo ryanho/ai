@@ -49,13 +49,13 @@ export default class extends Module {
 
 	@bindThis
 	private async mentionHook(msg: Message) {
-		if (msg.includes(['占', 'うらな', '運勢', 'おみくじ'])) {
+		if (msg.includes(['算命', '占卜', '占', 'うらな', '運勢', 'おみくじ'])) {
 			const date = new Date();
 			const seed = `${date.getFullYear()}/${date.getMonth()}/${date.getDate()}@${msg.userId}`;
 			const rng = seedrandom(seed);
 			const omikuji = blessing[Math.floor(rng() * blessing.length)];
 			const item = genItem(rng);
-			msg.reply(`**${omikuji}🎉**\nラッキーアイテム: ${item}`, {
+			msg.reply(`**${omikuji}🎉**\n幸運物品: ${item}`, {
 				cw: serifs.fortune.cw(msg.friend.name)
 			});
 			return true;

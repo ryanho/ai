@@ -61,31 +61,31 @@ export default class extends Module {
 			.sort((a, b) => a.length < b.length ? 1 : -1)[0]
 			.substr(1);
 
-		if (msg.includes(['こんにちは', 'こんにちわ'])) {
+		if (msg.includes(['早上好', 'こんにちは', 'こんにちわ'])) {
 			msg.reply(serifs.core.hello(msg.friend.name));
 			incLove();
 			return true;
 		}
 
-		if (msg.includes(['こんばんは', 'こんばんわ'])) {
+		if (msg.includes(['晚上好', 'こんばんは', 'こんばんわ'])) {
 			msg.reply(serifs.core.helloNight(msg.friend.name));
 			incLove();
 			return true;
 		}
 
-		if (msg.includes(['おは', 'おっは', 'お早う'])) {
+		if (msg.includes(['早安', 'おは', 'おっは', 'お早う'])) {
 			msg.reply(serifs.core.goodMorning(tension, msg.friend.name));
 			incLove();
 			return true;
 		}
 
-		if (msg.includes(['おやすみ', 'お休み'])) {
+		if (msg.includes(['晚安', 'おやすみ', 'お休み'])) {
 			msg.reply(serifs.core.goodNight(msg.friend.name));
 			incLove();
 			return true;
 		}
 
-		if (msg.includes(['行ってくる', '行ってきます', 'いってくる', 'いってきます'])) {
+		if (msg.includes(['我出門了', '行ってくる', '行ってきます', 'いってくる', 'いってきます'])) {
 			msg.reply(
 				msg.friend.love >= 7
 					? serifs.core.itterassyai.love(msg.friend.name)
@@ -94,7 +94,7 @@ export default class extends Module {
 			return true;
 		}
 
-		if (msg.includes(['ただいま'])) {
+		if (msg.includes(['我回來了', 'ただいま'])) {
 			msg.reply(
 				msg.friend.love >= 15 ? serifs.core.okaeri.love2(msg.friend.name) :
 				msg.friend.love >= 7 ? getSerif(serifs.core.okaeri.love(msg.friend.name)) :
@@ -135,7 +135,7 @@ export default class extends Module {
 
 	@bindThis
 	private omedeto(msg: Message): boolean {
-		if (!msg.includes(['おめでと'])) return false;
+		if (!msg.includes(['恭喜', 'おめでと'])) return false;
 
 		msg.reply(serifs.core.omedeto(msg.friend.name));
 
@@ -144,7 +144,7 @@ export default class extends Module {
 
 	@bindThis
 	private nadenade(msg: Message): boolean {
-		if (!msg.includes(['なでなで'])) return false;
+		if (!msg.includes(['摸摸', 'なでなで'])) return false;
 
 		//#region 1日に1回だけ親愛度を上げる(嫌われてない場合のみ)
 		if (msg.friend.love >= 0) {
@@ -176,7 +176,7 @@ export default class extends Module {
 
 	@bindThis
 	private kawaii(msg: Message): boolean {
-		if (!msg.includes(['かわいい', '可愛い'])) return false;
+		if (!msg.includes(['好可愛', 'かわいい', '可愛い'])) return false;
 
 		msg.reply(getSerif(
 			msg.friend.love >= 5 ? serifs.core.kawaii.love :
@@ -188,7 +188,7 @@ export default class extends Module {
 
 	@bindThis
 	private suki(msg: Message): boolean {
-		if (!msg.or(['好き', 'すき'])) return false;
+		if (!msg.or(['喜歡', '好き', 'すき'])) return false;
 
 		msg.reply(
 			msg.friend.love >= 5 ? (msg.friend.name ? serifs.core.suki.love(msg.friend.name) : serifs.core.suki.normal) :
@@ -200,7 +200,7 @@ export default class extends Module {
 
 	@bindThis
 	private hug(msg: Message): boolean {
-		if (!msg.or(['ぎゅ', 'むぎゅ', /^はぐ(し(て|よ|よう)?)?$/])) return false;
+		if (!msg.or(['抱抱', 'ぎゅ', 'むぎゅ', /^はぐ(し(て|よ|よう)?)?$/])) return false;
 
 		//#region 前のハグから1分経ってない場合は返信しない
 		// これは、「ハグ」と言って「ぎゅー」と返信したとき、相手が
@@ -231,7 +231,7 @@ export default class extends Module {
 
 	@bindThis
 	private humu(msg: Message): boolean {
-		if (!msg.includes(['踏んで'])) return false;
+		if (!msg.includes(['踩我', '踏んで'])) return false;
 
 		msg.reply(
 			msg.friend.love >= 5 ? serifs.core.humu.love :
@@ -243,7 +243,7 @@ export default class extends Module {
 
 	@bindThis
 	private batou(msg: Message): boolean {
-		if (!msg.includes(['罵倒して', '罵って'])) return false;
+		if (!msg.includes(['罵我', '罵倒して', '罵って'])) return false;
 
 		msg.reply(
 			msg.friend.love >= 5 ? serifs.core.batou.love :
@@ -255,7 +255,7 @@ export default class extends Module {
 
 	@bindThis
 	private itai(msg: Message): boolean {
-		if (!msg.or(['痛い', 'いたい']) && !msg.extractedText.endsWith('痛い')) return false;
+		if (!msg.or(['好痛', '痛い', 'いたい']) && !msg.extractedText.endsWith('痛い')) return false;
 
 		msg.reply(serifs.core.itai(msg.friend.name));
 
@@ -264,7 +264,7 @@ export default class extends Module {
 
 	@bindThis
 	private ote(msg: Message): boolean {
-		if (!msg.or(['お手'])) return false;
+		if (!msg.or(['伸手', 'お手'])) return false;
 
 		msg.reply(
 			msg.friend.love >= 10 ? serifs.core.ote.love2 :
@@ -276,7 +276,7 @@ export default class extends Module {
 
 	@bindThis
 	private ponkotu(msg: Message): boolean | HandlerResult {
-		if (!msg.includes(['ぽんこつ'])) return false;
+		if (!msg.includes(['敲頭', 'ぽんこつ'])) return false;
 
 		msg.friend.decLove();
 
