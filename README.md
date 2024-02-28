@@ -1,5 +1,8 @@
 <h1><p align="center"><img src="./ai.svg" alt="藍" height="200"></p></h1>
-<p align="center">An Ai for Misskey. <a href="./torisetu.md">About Ai</a></p>
+<p align="center">An Ai for Misskey. <a href="./torisetu-zh_TW.md">About Ai</a></p>
+
+## What's different / 與原版的差異
+保留原本的日文觸發字詞，並加上部份的中文字詞。大多數對話改成繁體中文，使用 MeCab 的功能則還是需要使用日文。詳情可參考<a href="./torisetu-zh_TW.md">文件</a>。
 
 ## これなに
 Misskey用の日本語Botです。
