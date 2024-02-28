@@ -30,7 +30,7 @@ export default class extends Module {
 
 	@bindThis
 	private async mentionHook(msg: Message) {
-		if (!msg.includes(['数当て', '数あて'])) return false;
+		if (!msg.includes(['數數遊戲', '数当て', '数あて'])) return false;
 
 		const exist = this.guesses.findOne({
 			userId: msg.userId,

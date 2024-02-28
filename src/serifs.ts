@@ -2,11 +2,11 @@
 
 export default {
 	core: {
-		setNameOk: name => `わかりました。これからは${name}とお呼びしますね！`,
+		setNameOk: name => `知道了。從現在開始，我就叫你${name}！`,
 
-		san: 'さん付けした方がいいですか？',
+		san: '是不是加個san比較好？',
 
-		yesOrNo: '「はい」か「いいえ」しかわからないんです...',
+		yesOrNo: '我只知道「是」或「否」...',
 
 		hello: name => name ? `早上好、${name}♪` : `早上好♪`,
 
@@ -144,13 +144,13 @@ export default {
 
 		shutdown: '我還不想睡喔...？',
 
-		transferNeedDm: 'わかりました、それはチャットで話しませんか？',
+		transferNeedDm: '好吧，我們為什麼不聊聊這個呢？',
 
-		transferCode: code => `わかりました。\n合言葉は「${code}」です！`,
+		transferCode: code => `知道了。 \n密碼是「${code}」！`,
 
-		transferFailed: 'うーん、合言葉が間違ってませんか...？',
+		transferFailed: '呃，是不是密碼錯誤啊…？',
 
-		transferDone: name => name ? `はっ...！ おかえりなさい、${name}！` : `はっ...！ おかえりなさい！`,
+		transferDone: name => name ? `哈...！歡迎回來，{name}！` : `哈...！歡迎回家！`,
 	},
 
 	keyword: {
@@ -293,9 +293,9 @@ export default {
 	kazutori: {
 		alreadyStarted: '正在進行中喔～',
 
-		matakondo: '有機會我們再來一次吧！',
+		matakondo: '有機會再一起玩！',
 
-		intro: minutes => `みなさん、数取りゲームしましょう！\n0~100の中で最も大きい数字を取った人が勝ちです。他の人と被ったらだめですよ～\n制限時間は${minutes}分です。数字はこの投稿にリプライで送ってくださいね！`,
+		intro: minutes => `大家好，一起來玩數數遊戲吧！\n0 到 100 之間，搶到最大數字的人獲勝。不可以跟他人重複喔～\n時間限制為${minutes}分鐘。請回覆此貼文並附上您的數字！`,
 
 		finish: '比賽結果揭曉！',
 
@@ -324,11 +324,11 @@ export default {
 	 * タイマー
 	 */
 	timer: {
-		set: 'わかりました！',
+		set: '知道了！',
 
-		invalid: 'うーん...？',
+		invalid: '唔...？',
 
-		tooLong: '長すぎます…',
+		tooLong: '太長了…',
 
 		notify: (time, name) => name ? `${name}、${time}経ちましたよ！` : `${time}経ちましたよ！`
 	},
@@ -337,27 +337,27 @@ export default {
 	 * リマインダー
 	 */
 	reminder: {
-		invalid: 'うーん...？',
+		invalid: '唔...？',
 
-		doneFromInvalidUser: 'イタズラはめっですよ！',
+		doneFromInvalidUser: '我討厭惡作劇！',
 
-		reminds: 'やること一覧です！',
+		reminds: '這是要做的事情的清單！',
 
-		notify: (name) => name ? `${name}、これやりましたか？` : `これやりましたか？`,
+		notify: (name) => name ? `${name}、這個已經完成了嘛？` : `這個已經完成了嘛？`,
 
-		notifyWithThing: (thing, name) => name ? `${name}、「${thing}」やりましたか？` : `「${thing}」やりましたか？`,
+		notifyWithThing: (thing, name) => name ? `${name}、「${thing}」已經完成了嘛？` : `「${thing}」已經完成了嘛？`,
 
 		done: (name) => name ? [
-			`よく出来ました、${name}♪`,
-			`${name}、さすがですっ！`,
-			`${name}、えらすぎます...！`,
+			`做的好、${name}♪`,
+			`${name}、不愧是你！`,
+			`${name}、太厲害了...！`,
 		] : [
-			`よく出来ました♪`,
-			`さすがですっ！`,
-			`えらすぎます...！`,
+			`做的好♪`,
+			`不愧是你！`,
+			`太厲害了...！`,
 		],
 
-		cancel: `わかりました。`,
+		cancel: `知道了。`,
 	},
 
 	/**
@@ -368,7 +368,7 @@ export default {
 	},
 
 	server: {
-		cpu: 'サーバーの負荷が高そうです。大丈夫でしょうか...？'
+		cpu: '伺服器負荷似乎很高。沒問題嗎...？'
 	},
 
 	maze: {
@@ -415,7 +415,7 @@ export default {
 			'感謝您今天的辛勤工作！我也會努力的♪',
 			'嗯，我想做什麼來著…？',
 			'在家我感覺最平靜...',
-			'如果你累了，我會寵你♪',
+			'你累了的話，我可以幫你按摩哦♪',
 			'即使我們相距遙遠，我的心卻離你很近♪',
 			'是小藍喔〜',
 			'狗狗很可愛',

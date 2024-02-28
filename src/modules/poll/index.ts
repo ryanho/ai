@@ -7,140 +7,140 @@ import config from '@/config.js';
 import type { Note } from '@/misskey/note.js';
 
 export default class extends Module {
-	public readonly name = 'poll';
+    public readonly name = 'poll';
 
-	@bindThis
-	public install() {
-		setInterval(() => {
-			if (Math.random() < 0.1) {
-				this.post();
-			}
-		}, 1000 * 60 * 60);
+    @bindThis
+    public install() {
+        setInterval(() => {
+            if (Math.random() < 0.1) {
+                this.post();
+            }
+        }, 1000 * 60 * 60);
 
-		return {
-			mentionHook: this.mentionHook,
-			timeoutCallback: this.timeoutCallback,
-		};
-	}
+        return {
+            mentionHook: this.mentionHook,
+            timeoutCallback: this.timeoutCallback,
+        };
+    }
 
-	@bindThis
-	private async post() {
-		const duration = 1000 * 60 * 15;
+    @bindThis
+    private async post() {
+        const duration = 1000 * 60 * 15;
 
-		const polls = [ // TODO: Extract serif
-			['珍しそうなもの', 'みなさんは、どれがいちばん珍しいと思いますか？'],
-			['美味しそうなもの', 'みなさんは、どれがいちばん美味しいと思いますか？'],
-			['重そうなもの', 'みなさんは、どれがいちばん重いと思いますか？'],
-			['欲しいもの', 'みなさんは、どれがいちばん欲しいですか？'],
-			['無人島に持っていきたいもの', 'みなさんは、無人島にひとつ持っていけるとしたらどれにしますか？'],
-			['家に飾りたいもの', 'みなさんは、家に飾るとしたらどれにしますか？'],
-			['売れそうなもの', 'みなさんは、どれがいちばん売れそうだと思いますか？'],
-			['降ってきてほしいもの', 'みなさんは、どれが空から降ってきてほしいですか？'],
-			['携帯したいもの', 'みなさんは、どれを携帯したいですか？'],
-			['商品化したいもの', 'みなさんは、商品化するとしたらどれにしますか？'],
-			['発掘されそうなもの', 'みなさんは、遺跡から発掘されそうなものはどれだと思いますか？'],
-			['良い香りがしそうなもの', 'みなさんは、どれがいちばんいい香りがすると思いますか？'],
-			['高値で取引されそうなもの', 'みなさんは、どれがいちばん高値で取引されると思いますか？'],
-			['地球周回軌道上にありそうなもの', 'みなさんは、どれが地球周回軌道上を漂っていそうだと思いますか？'],
-			['プレゼントしたいもの', 'みなさんは、私にプレゼントしてくれるとしたらどれにしますか？'],
-			['プレゼントされたいもの', 'みなさんは、プレゼントでもらうとしたらどれにしますか？'],
-			['私が持ってそうなもの', 'みなさんは、私が持ってそうなものはどれだと思いますか？'],
-			['流行りそうなもの', 'みなさんは、どれが流行りそうだと思いますか？'],
-			['朝ごはん', 'みなさんは、朝ごはんにどれが食べたいですか？'],
-			['お昼ごはん', 'みなさんは、お昼ごはんにどれが食べたいですか？'],
-			['お夕飯', 'みなさんは、お夕飯にどれが食べたいですか？'],
-			['体に良さそうなもの', 'みなさんは、どれが体に良さそうだと思いますか？'],
-			['後世に遺したいもの', 'みなさんは、どれを後世に遺したいですか？'],
-			['楽器になりそうなもの', 'みなさんは、どれが楽器になりそうだと思いますか？'],
-			['お味噌汁の具にしたいもの', 'みなさんは、お味噌汁の具にするとしたらどれがいいですか？'],
-			['ふりかけにしたいもの', 'みなさんは、どれをごはんにふりかけたいですか？'],
-			['よく見かけるもの', 'みなさんは、どれをよく見かけますか？'],
-			['道に落ちてそうなもの', 'みなさんは、道端に落ちてそうなものはどれだと思いますか？'],
-			['美術館に置いてそうなもの', 'みなさんは、この中で美術館に置いてありそうなものはどれだと思いますか？'],
-			['教室にありそうなもの', 'みなさんは、教室にありそうなものってどれだと思いますか？'],
-			['絵文字になってほしいもの', '絵文字になってほしいものはどれですか？'],
-			['Misskey本部にありそうなもの', 'みなさんは、Misskey本部にありそうなものはどれだと思いますか？'],
-			['燃えるゴミ', 'みなさんは、どれが燃えるゴミだと思いますか？'],
-			['好きなおにぎりの具', 'みなさんの好きなおにぎりの具はなんですか？'],
-		];
+        const polls = [ // TODO: 提取文字
+            ['珍貴的物品', '大家認為哪個是最珍貴的？'],
+            ['看起來美味的東西', '大家認為哪個最美味？'],
+            ['看起來沈重的東西', '大家認為哪個最重？'],
+            ['想要的東西', '大家最想要哪個？'],
+            ['希望帶到無人島上的東西', '如果你只能帶一樣東西到無人島上，你會選擇哪個？'],
+            ['想在家裡擺放的東西', '大家想在家裡擺放哪個？'],
+            ['可能會很暢銷的東西', '大家認為哪個最有可能暢銷？'],
+            ['希望從天上掉下來的東西', '大家希望從天上掉下來的是哪個？'],
+            ['想要攜帶的東西', '大家想攜帶哪個？'],
+            ['想商品化的東西', '大家如果要商品化哪個？'],
+            ['可能會從遺跡發掘出來的東西', '大家認為遺跡中最有可能被發掘出來的是哪個？'],
+            ['聞起來香氣宜人的東西', '大家認為哪個香氣最好聞？'],
+            ['可能會以高價交易的東西', '大家認為哪個最有可能以高價交易？'],
+            ['可能在地球軌道上漂流的東西', '大家認為哪個最可能在地球軌道上漂流？'],
+            ['想要當作禮物送出的東西', '如果要送給你禮物，你會選擇哪個？'],
+            ['希望收到作為禮物的東西', '如果要收到禮物，你希望是哪個？'],
+            ['你認為我最有可能擁有的東西', '你認為我最有可能擁有的是哪個？'],
+            ['可能會流行的東西', '大家認為哪個最有可能流行？'],
+            ['早餐', '你會選擇哪個當早餐？'],
+            ['午餐', '你會選擇哪個當午餐？'],
+            ['晚餐', '你會選擇哪個當晚餐？'],
+            ['看起來對身體有益的東西', '大家認為哪個最對身體有益？'],
+            ['想要留給後世的東西', '你想留給後世的是哪個？'],
+            ['可能成為樂器的東西', '大家認為哪個最有可能成為樂器？'],
+            ['想加入到味噌湯中的配料', '你會選擇哪個作為味噌湯的配料？'],
+            ['想撒在米飯上的東西', '你會撒哪個在米飯上？'],
+            ['經常見到的東西', '你經常看到哪個？'],
+            ['可能會在路邊找到的東西', '大家認為哪個最有可能在路邊找到？'],
+            ['可能會被放在美術館的東西', '你認為哪個最有可能被放在美術館？'],
+            ['可能會在教室裡找到的東西', '大家認為教室裡最可能找到哪個？'],
+            ['希望成為表情符號的東西', '你希望哪個成為表情符號？'],
+            ['可能會在Misskey總部找到的東西', '大家認為Misskey總部最可能找到哪個？'],
+            ['可以燃燒的垃圾', '你認為哪個是可以燃燒的垃圾？'],
+            ['喜歡的飯糰配料', '你最喜歡什麼樣的飯糰配料？'],
+        ];
 
-		const poll = polls[Math.floor(Math.random() * polls.length)];
+        const poll = polls[Math.floor(Math.random() * polls.length)];
 
-		const choices = [
-			genItem(),
-			genItem(),
-			genItem(),
-			genItem(),
-		];
+        const choices = [
+            genItem(),
+            genItem(),
+            genItem(),
+            genItem(),
+        ];
 
-		const note = await this.ai.post({
-			text: poll[1],
-			poll: {
-				choices,
-				expiredAfter: duration,
-				multiple: false,
-			}
-		});
+        const note = await this.ai.post({
+            text: poll[1],
+            poll: {
+                choices,
+                expiredAfter: duration,
+                multiple: false,
+            }
+        });
 
-		// タイマーセット
-		this.setTimeoutWithPersistence(duration + 3000, {
-			title: poll[0],
-			noteId: note.id,
-		});
-	}
+        // 設置計時器
+        this.setTimeoutWithPersistence(duration + 3000, {
+            title: poll[0],
+            noteId: note.id,
+        });
+    }
 
-	@bindThis
-	private async mentionHook(msg: Message) {
-		if (!msg.or(['/poll']) || msg.user.username !== config.master) {
-			return false;
-		} else {
-			this.log('Manualy poll requested');
-		}
+    @bindThis
+    private async mentionHook(msg: Message) {
+        if (!msg.or(['/poll']) || msg.user.username !== config.master) {
+            return false;
+        } else {
+            this.log('手動發起投票');
+        }
 
-		this.post();
+        this.post();
 
-		return true;
-	}
+        return true;
+    }
 
-	@bindThis
-	private async timeoutCallback({ title, noteId }) {
-		const note: Note = await this.ai.api('notes/show', { noteId });
+    @bindThis
+    private async timeoutCallback({ title, noteId }) {
+        const note: Note = await this.ai.api('notes/show', { noteId });
 
-		const choices = note.poll!.choices;
+        const choices = note.poll!.choices;
 
-		let mostVotedChoice;
+        let mostVotedChoice;
 
-		for (const choice of choices) {
-			if (mostVotedChoice == null) {
-				mostVotedChoice = choice;
-				continue;
-			}
+        for (const choice of choices) {
+            if (mostVotedChoice == null) {
+                mostVotedChoice = choice;
+                continue;
+            }
 
-			if (choice.votes > mostVotedChoice.votes) {
-				mostVotedChoice = choice;
-			}
-		}
+            if (choice.votes > mostVotedChoice.votes) {
+                mostVotedChoice = choice;
+            }
+        }
 
-		const mostVotedChoices = choices.filter(choice => choice.votes === mostVotedChoice.votes);
+        const mostVotedChoices = choices.filter(choice => choice.votes === mostVotedChoice.votes);
 
-		if (mostVotedChoice.votes === 0) {
-			this.ai.post({ // TODO: Extract serif
-				text: '投票はありませんでした',
-				renoteId: noteId,
-			});
-		} else if (mostVotedChoices.length === 1) {
-			this.ai.post({ // TODO: Extract serif
-				cw: `${title}アンケートの結果発表です！`,
-				text: `結果は${mostVotedChoice.votes}票の「${mostVotedChoice.text}」でした！`,
-				renoteId: noteId,
-			});
-		} else {
-			const choices = mostVotedChoices.map(choice => `「${choice.text}」`).join('と');
-			this.ai.post({ // TODO: Extract serif
-				cw: `${title}アンケートの結果発表です！`,
-				text: `結果は${mostVotedChoice.votes}票の${choices}でした！`,
-				renoteId: noteId,
-			});
-		}
-	}
+        if (mostVotedChoice.votes === 0) {
+            this.ai.post({ // TODO: 提取文字
+                text: '沒有投票',
+                renoteId: noteId,
+            });
+        } else if (mostVotedChoices.length === 1) {
+            this.ai.post({ // TODO: 提取文字
+                cw: `${title}投票結果公佈！`,
+                text: `最終結果為${mostVotedChoice.votes}票的「${mostVotedChoice.text}」！`,
+                renoteId: noteId,
+            });
+        } else {
+            const choices = mostVotedChoices.map(choice => `「${choice.text}」`).join('與');
+            this.ai.post({ // TODO: 提取文字
+                cw: `${title}投票結果公佈！`,
+                text: `最終結果為${mostVotedChoice.votes}票的${choices}！`,
+                renoteId: noteId,
+            });
+        }
+    }
 }
