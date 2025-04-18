@@ -28,27 +28,27 @@ export default {
 
 		erait: {
 			general: name => name ? [
-				`${name}、今日もえらいです！`,
-				`${name}、今日もえらいですよ～♪`
+				`${name}、今天也很棒喔！`,
+				`${name}、今天也是很了不起喔～♪`
 			] : [
-				`今日もえらいです！`,
-				`今日もえらいですよ～♪`
+				`今天也很棒喔！`,
+				`今天也是很了不起喔～♪`
 			],
 
 			specify: (thing, name) => name ? [
-				`${name}、${thing}てえらいです！`,
-				`${name}、${thing}てえらいですよ～♪`
+				`${name}、${thing}真的好棒喔！`,
+				`${name}、${thing}真的很了不起唷～♪`
 			] : [
-				`${thing}てえらいです！`,
-				`${thing}てえらいですよ～♪`
+				`${thing}真的好棒喔！`,
+				`${thing}真的很了不起唷～♪`
 			],
 
 			specify2: (thing, name) => name ? [
-				`${name}、${thing}でえらいです！`,
-				`${name}、${thing}でえらいですよ～♪`
+				`${name}、${thing}真的好棒喔！`,
+				`${name}、${thing}真的很了不起唷～♪`
 			] : [
-				`${thing}でえらいです！`,
-				`${thing}でえらいですよ～♪`
+				`${thing}真的好棒喔！`,
+				`${thing}真的很了不起唷～♪`
 			],
 		},
 
@@ -189,7 +189,7 @@ export default {
 		/**
 		 * 接待開始
 		 */
-		startedSettai: name => `(開始招待 ${name})`,
+		startedSettai: name => `(開始陪玩 ${name})`,
 
 		/**
 		 * 勝ったとき
@@ -199,7 +199,7 @@ export default {
 		/**
 		 * 接待のつもりが勝ってしまったとき
 		 */
-		iWonButSettai: name => `(${name}に接待で勝っちゃいました...)`,
+		iWonButSettai: name => `(不小心在陪玩時贏了${name}……)`,
 
 		/**
 		 * 負けたとき
@@ -209,7 +209,7 @@ export default {
 		/**
 		 * 接待で負けてあげたとき
 		 */
-		iLoseButSettai: name => `(${name}に接待で負けてあげました...♪)`,
+		iLoseButSettai: name => `(我剛剛在陪玩時故意輸給了${name}喔～♪)`,
 
 		/**
 		 * 引き分けたとき
@@ -219,7 +219,7 @@ export default {
 		/**
 		 * 接待で引き分けたとき
 		 */
-		drawnSettai: name => `(${name}に接待で引き分けました...)`,
+		drawnSettai: name => `(我剛剛陪${name}玩，結果打成平手啦……)`,
 
 		/**
 		 * 相手が投了したとき
@@ -229,7 +229,7 @@ export default {
 		/**
 		 * 接待してたら相手が投了したとき
 		 */
-		settaiButYouSurrendered: name => `(${name}を接待していたら投了されちゃいました... ごめんなさい)`,
+		settaiButYouSurrendered: name => `(我本來在陪${name}玩，結果他竟然投降了……對不起啦。)`,
 	},
 
 	/**
@@ -330,7 +330,7 @@ export default {
 
 		tooLong: '太長了…',
 
-		notify: (time, name) => name ? `${name}、${time}経ちましたよ！` : `${time}経ちましたよ！`
+		notify: (time, name) => name ? `${name}，已經過了${time}囉！` : `已經過了${time}囉！`
 	},
 
 	/**
@@ -382,16 +382,16 @@ export default {
 	},
 
 	checkCustomEmojis: {
-		post: (server_name, num) => `${server_name}に${num}件の絵文字が追加されました！`,
+		post: (server_name, num) => `${server_name} 新增了 ${num} 個表情符號喔！`,
 		emojiPost: emoji => `:${emoji}:\n(\`${emoji}\`) #AddCustomEmojis`,
-		postOnce: (server_name, num, text) => `${server_name}に${num}件の絵文字が追加されました！\n${text} #AddCustomEmojis`,
+		postOnce: (server_name, num, text) => `${server_name} 已新增 ${num} 個表情符號！\n${text} #AddCustomEmojis`,
 		emojiOnce: emoji => `:${emoji}:(\`${emoji}\`)`,
-		nothing: '絵文字を確認しましたが、なにも追加されていないみたいです',
+		nothing: '我查看了一下表情符號，似乎沒有新增任何東西耶',
 	},
 
 	aichat: {
-		nothing: type => `あぅ... ${type}のAPIキーが登録されてないみたいです`,
-		error: type => `うぇ...${type}でエラーが発生しちゃったみたいです。gemini-flashだと動くかも？`,
+		nothing: type => `啊…好像沒有註冊${type}的API金鑰耶`,
+		error: type => `唉…好像在${type}上發生錯誤了耶。或許換用gemini-flash會動吧？`,
 		post: (text, type) => `${text} (${type}) #aichat`,
 	},
 
@@ -406,13 +406,13 @@ export default {
 			'我有點睏了',
 			'好嗎？',
 			'(。´･ω･)?',
-			'ふぇー',
+			'咦～',
 			'那......像這樣......那樣做？',
-			'ぼー…',
+			'發呆中…',
 			'呼……我累了',
 			'要煮味噌湯嗎？',
 			'先吃晚餐嗎？還是想先洗澡呢？',
-			'ふえええええ！？',
+			'哇啊啊啊！？',
 			'我很高興在我的網站上看到這麼多我的插圖！',
 			'Misskey這個名字好可愛啊！',
 			'唉，黑白棋太難了...',
@@ -427,7 +427,7 @@ export default {
 			'是小藍喔〜',
 			'狗狗很可愛',
 			'程式？',
-			'ごろーん…',
+			'咕嚕～',
 			'儘管我什麼也沒做，電腦還是壞了...',
 			'Have a nice day♪',
 			'我被棉被吃掉了',
@@ -439,7 +439,7 @@ export default {
 			'Misskey 總部到處都是名為 Saba 的機器',
 			'沒有尾巴吧？',
 			'呀…！\n貓耳被摸的話，會癢癢的',
-			'反可逆性是什麼意思？',
+			'防止反編譯是什麼呢？',
 			'很喜歡 Misskey 的制服，好可愛♪',
 			'哇，被子的感覺真好…',
 			'女僕裝適合我嗎？',
@@ -447,13 +447,13 @@ export default {
 			'主人，你在看哪裡？',
 			'當主人看著我的時候，我也在看著主人',
 			'是的，是媽媽〜',
-			'くぅ～ん...',
+			'唔～',
 			'All your note are belong to me!',
 			'既然有機會，我就選擇紅色這扇門！',
 			'好的',
 			'( ˘ω˘)ｽﾔｧ',
 			'(｀・ω・´)ｼｬｷｰﾝ',
-			'不好意思，我嚼了一下',
+			'不好意思，我說錯話了～',
 			'從早安到晚安，都是你的小藍〜',
 			'據說 Misskey 的開發人員早上起得很晚',
 			'の、のじゃ...',
